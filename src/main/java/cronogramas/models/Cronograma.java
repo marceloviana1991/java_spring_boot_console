@@ -1,15 +1,27 @@
 package cronogramas.models;
 
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "cronogramas")
 public class Cronograma {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(unique = true)
     private String titulo;
+    @Transient
+    private List<Evento> eventos = new ArrayList<>();
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public List<Evento> getEventos() {
+        return eventos;
     }
 
     @Override

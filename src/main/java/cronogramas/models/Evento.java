@@ -1,8 +1,15 @@
 package cronogramas.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "eventos")
 public class Evento {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String atividade;
+    @Enumerated(EnumType.STRING)
     private DiaDaSemana diaDaSemana;
 
     public void setDiaDaSemana(DiaDaSemana diaDaSemana) {
@@ -11,10 +18,6 @@ public class Evento {
 
     public void setAtividade(String atividade) {
         this.atividade = atividade;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     @Override
