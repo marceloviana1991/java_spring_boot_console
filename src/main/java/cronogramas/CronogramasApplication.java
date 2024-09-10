@@ -1,5 +1,8 @@
 package cronogramas;
 
+import cronogramas.models.Cronograma;
+import cronogramas.models.DiaDaSemana;
+import cronogramas.models.Evento;
 import cronogramas.principal.Principal;
 import cronogramas.repository.CronogramaRepository;
 import cronogramas.repository.EventoRepository;
@@ -7,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.List;
 
 @SpringBootApplication
 public class CronogramasApplication implements CommandLineRunner {
@@ -26,6 +31,14 @@ public class CronogramasApplication implements CommandLineRunner {
 				cronogramaRepository,
 				eventoRepository
 		);
-		principal.selectConsole();
+
+		principal.insertCronogramaConsole("Titulo do cronograma");
+		principal.insertEventoConsole("descreve atividade de evento", DiaDaSemana.QUARTA);
+
+
+		List<Cronograma> cronogramas = principal.selectCronogramasConsole();
+		cronogramas.forEach(System.out::println);
+		List<Evento> eventos = principal.selectEventosConsole();
+		eventos.forEach(System.out::println);
 	}
 }

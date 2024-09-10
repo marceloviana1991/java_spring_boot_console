@@ -19,26 +19,25 @@ public class Principal {
         this.eventoRepository = eventoRepository;
     }
 
-    public void insertConsole() {
-        String tituloCronograma = "titulo do cronograma";
-
-        String atividadeEvento = "escreve atividade";
-        DiaDaSemana diaDaSemanaEvento = DiaDaSemana.SEGUNDA;
-
+    public void insertCronogramaConsole(String tituloCronograma) {
         Cronograma cronograma = new Cronograma();
         cronograma.setTitulo(tituloCronograma);
         cronogramaRepository.save(cronograma);
+    }
+
+    public void insertEventoConsole(String atividadeEvento, DiaDaSemana diaDaSemanaEvento) {
         Evento evento = new Evento();
         evento.setAtividade(atividadeEvento);
         evento.setDiaDaSemana(diaDaSemanaEvento);
         eventoRepository.save(evento);
     }
 
-    public void selectConsole() {
-        List<Cronograma> cronogramas = cronogramaRepository.findAll();
-        List<Evento> eventos = eventoRepository.findAll();
-        cronogramas.forEach(System.out::println);
-        eventos.forEach(System.out::println);
+    public List<Cronograma> selectCronogramasConsole() {
+        return cronogramaRepository.findAll();
+    }
+
+    public List<Evento> selectEventosConsole() {
+        return eventoRepository.findAll();
     }
 
 
