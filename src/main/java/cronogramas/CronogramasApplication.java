@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Collections;
 import java.util.List;
 
 @SpringBootApplication
@@ -32,13 +33,19 @@ public class CronogramasApplication implements CommandLineRunner {
 				eventoRepository
 		);
 
-		principal.insertCronogramaConsole("Titulo do cronograma");
-		principal.insertEventoConsole("descreve atividade de evento", DiaDaSemana.QUARTA);
+//		principal.insertCronogramaConsole("Titulo do cronograma");
+//		principal.insertEventoConsole("descreve atividade de evento", DiaDaSemana.QUARTA, 1L);
+
 
 
 		List<Cronograma> cronogramas = principal.selectCronogramasConsole();
 		cronogramas.forEach(System.out::println);
 		List<Evento> eventos = principal.selectEventosConsole();
 		eventos.forEach(System.out::println);
+		System.out.println();
+
+		List<Evento> eventosCronograma = principal.selectEventosCronogramaConsole(1L);
+		Collections.sort(eventosCronograma);
+		eventosCronograma.forEach(System.out::println);
 	}
 }

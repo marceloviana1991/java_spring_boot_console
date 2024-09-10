@@ -13,7 +13,7 @@ public class Cronograma {
     private Long id;
     @Column(unique = true)
     private String titulo;
-    @Transient
+    @OneToMany(mappedBy = "cronograma")
     private List<Evento> eventos = new ArrayList<>();
 
     public void setTitulo(String titulo) {
@@ -22,6 +22,10 @@ public class Cronograma {
 
     public List<Evento> getEventos() {
         return eventos;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override
