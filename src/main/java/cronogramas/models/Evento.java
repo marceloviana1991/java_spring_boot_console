@@ -4,12 +4,12 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "eventos")
-public class Evento implements Comparable<Evento> {
+public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String atividade;
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private DiaDaSemana diaDaSemana;
     @ManyToOne
     private Cronograma cronograma;
@@ -41,11 +41,6 @@ public class Evento implements Comparable<Evento> {
                 ", atividade='" + atividade + '\'' +
                 ", diaDaSemana=" + diaDaSemana +
                 '}';
-    }
-
-    @Override
-    public int compareTo(Evento evento) {
-        return this.getDiaDaSemana().compareTo(evento.getDiaDaSemana());
     }
 
 }

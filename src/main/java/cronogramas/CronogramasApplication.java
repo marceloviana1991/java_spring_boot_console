@@ -34,6 +34,8 @@ public class CronogramasApplication implements CommandLineRunner {
 		);
 
 //		principal.insertCronogramaConsole("Titulo do cronograma");
+//		principal.insertEventoConsole("descreve atividade de evento", DiaDaSemana.SABADO, 1L);
+//		principal.insertEventoConsole("descreve atividade de evento", DiaDaSemana.SEGUNDA, 1L);
 //		principal.insertEventoConsole("descreve atividade de evento", DiaDaSemana.QUARTA, 1L);
 
 
@@ -45,7 +47,6 @@ public class CronogramasApplication implements CommandLineRunner {
 		System.out.println();
 
 		List<Evento> eventosCronograma = principal.selectEventosCronogramaConsole(1L);
-		Collections.sort(eventosCronograma);
 		eventosCronograma.forEach(System.out::println);
 	}
 }

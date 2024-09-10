@@ -6,11 +6,9 @@ import cronogramas.models.Evento;
 import cronogramas.repository.CronogramaRepository;
 import cronogramas.repository.EventoRepository;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Principal {
     private CronogramaRepository cronogramaRepository;
@@ -35,7 +33,6 @@ public class Principal {
         evento.setDiaDaSemana(diaDaSemanaEvento);
         Optional<Cronograma> cronograma = cronogramaRepository.findById(idCronograma);
         evento.setCronograma(cronograma.get());
-
         eventoRepository.save(evento);
     }
 
@@ -48,10 +45,7 @@ public class Principal {
     }
 
     public List<Evento> selectEventosCronogramaConsole(Long idCronograma) {
-        return eventoRepository.findAll().stream()
-                .filter(evento -> evento.getCronograma().getId().equals(idCronograma))
-                .sorted(Comparator.comparing(evento -> evento))
-                .collect(Collectors.toList());
+        return eventoRepository.findByCronogramaIdOrderByDiaDaSemana(idCronograma);
     }
 
 }

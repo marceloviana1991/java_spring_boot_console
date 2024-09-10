@@ -13,15 +13,9 @@ public class Cronograma {
     private Long id;
     @Column(unique = true)
     private String titulo;
-    @OneToMany(mappedBy = "cronograma")
-    private List<Evento> eventos = new ArrayList<>();
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public List<Evento> getEventos() {
-        return eventos;
     }
 
     public Long getId() {
