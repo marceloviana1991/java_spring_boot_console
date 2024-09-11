@@ -14,4 +14,12 @@ public enum DiaDaSemana {
         this.ordem = ordem;
     }
 
+    public static DiaDaSemana fromString(int ordem) {
+        for (DiaDaSemana diaDaSemana : DiaDaSemana.values()) {
+            if (diaDaSemana.ordem == ordem) {
+                return diaDaSemana;
+            }
+        }
+        throw new IllegalArgumentException("Argumento inválido!");
+    }
 }
