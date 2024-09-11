@@ -32,21 +32,24 @@ public class CronogramasApplication implements CommandLineRunner {
 				eventoRepository
 		);
 
+// insert into table (coluns) values (*)
 //		principal.insertCronogramaConsole("Titulo do outro cronograma");
-//		principal.insertEventoConsole("descreve atividade de evento do outro cronograma",
-//				DiaDaSemana.SABADO, 1L);
+//		principal.insertEventoConsole("agora vai !!!",
+//				DiaDaSemana.DOMINGO, 1L);
 
 
-
-		System.out.println("select * from cronogramas");
+// select * from cronogramas
 		List<Cronograma> cronogramas = principal.selectCronogramasConsole();
 		cronogramas.forEach(System.out::println);
 		System.out.println();
+
+// select * from eventos
 		System.out.println("select * from eventos");
 		List<Evento> eventos = principal.selectEventosConsole();
 		eventos.forEach(System.out::println);
 		System.out.println();
-		System.out.println("select * from eventos where id_cronograma=1 order by dia_da_semana");
+
+// select * from eventos where id_cronograma=1 order by dia_da_semans
 		List<Evento> eventosCronograma = principal.selectEventosCronogramaConsole(2L);
 		eventosCronograma.forEach(System.out::println);
 	}

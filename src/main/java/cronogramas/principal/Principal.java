@@ -30,12 +30,8 @@ public class Principal {
         evento.setAtividade(atividadeEvento);
         evento.setDiaDaSemana(diaDaSemanaEvento);
         Optional<Cronograma> cronograma = cronogramaRepository.findById(idCronograma);
-        if (cronograma.isPresent()) {
-            evento.setCronograma(cronograma.get());
-            eventoRepository.save(evento);
-        } else {
-            System.out.println("Cronograma id não encontrado!");
-        }
+        cronograma.get().addEvento(evento);
+        cronogramaRepository.save(cronograma.get());
     }
 
     public List<Cronograma> selectCronogramasConsole() {

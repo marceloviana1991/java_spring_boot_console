@@ -12,6 +12,7 @@ public class Evento {
     @Enumerated(EnumType.ORDINAL)
     private DiaDaSemana diaDaSemana;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Cronograma cronograma;
 
     public void setDiaDaSemana(DiaDaSemana diaDaSemana) {
