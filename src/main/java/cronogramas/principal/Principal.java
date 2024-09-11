@@ -6,9 +6,7 @@ import cronogramas.models.Evento;
 import cronogramas.repository.CronogramaRepository;
 import cronogramas.repository.EventoRepository;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 public class Principal {
     private CronogramaRepository cronogramaRepository;
@@ -32,8 +30,12 @@ public class Principal {
         evento.setAtividade(atividadeEvento);
         evento.setDiaDaSemana(diaDaSemanaEvento);
         Optional<Cronograma> cronograma = cronogramaRepository.findById(idCronograma);
-        evento.setCronograma(cronograma.get());
-        eventoRepository.save(evento);
+        if (cronograma.isPresent()) {
+            evento.setCronograma(cronograma.get());
+            eventoRepository.save(evento);
+        } else {
+            System.out.println("Cronograma id não encontrado!");
+        }
     }
 
     public List<Cronograma> selectCronogramasConsole() {
@@ -47,5 +49,4 @@ public class Principal {
     public List<Evento> selectEventosCronogramaConsole(Long idCronograma) {
         return eventoRepository.findByCronogramaIdOrderByDiaDaSemana(idCronograma);
     }
-
 }

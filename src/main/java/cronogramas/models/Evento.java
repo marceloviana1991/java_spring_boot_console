@@ -40,7 +40,7 @@ public class Evento {
                 "id=" + id +
                 ", atividade='" + atividade + '\'' +
                 ", diaDaSemana=" + diaDaSemana +
+                ", idCronograma=" + cronograma.getId() +
                 '}';
     }
-
 }
