@@ -5,10 +5,12 @@ Esse é um exemplo de uma aplicação console Java que utiliza o framework Sprin
 ## Dependências
 
 - Spring Data JPA SQL
-Persist data in SQL stores with Java Persistence API using Spring Data and Hibernate.
+
+(Persist data in SQL stores with Java Persistence API using Spring Data and Hibernate)
 
 - PostgreSQL Driver SQL
-A JDBC and R2DBC driver that allows Java programs to connect to a PostgreSQL database using standard, database independent Java code.
+
+(A JDBC and R2DBC driver that allows Java programs to connect to a PostgreSQL database using standard, database independent Java code)
 
 ## Estrutura do Projeto
 
