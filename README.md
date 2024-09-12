@@ -21,9 +21,11 @@ O projeto contém os seguintes arquivos:
   - `principal.Principal.java` - Classe principal da aplicação console.
   - `models.Cronograma.java` - Classe que representa entidade.
   - `models.Evento.java` - Classe que representa entidade.
+  - `models.Avaliacao.java` - Classe que representa entidade.
   - `models.DiaDeSemana.java` - Enum implementodo como atributo da classe Evento.
   - `repository.CronogramaRepository.java` Interface que extende métodos JPA.
-  - `repository.EventoRepository.java` - A classe Interface que extende métodos JPA.
+  - `repository.EventoRepository.java` Interface que extende métodos JPA.
+  - `repository.AvaliacaoRepository.java` Interface que extende métodos JPA.
 
 
 

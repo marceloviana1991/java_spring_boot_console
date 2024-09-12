@@ -15,6 +15,10 @@ public class Evento {
     @JoinColumn(nullable = false)
     private Cronograma cronograma;
 
+    public Long getId() {
+        return id;
+    }
+
     public void setDiaDaSemana(DiaDaSemana diaDaSemana) {
         this.diaDaSemana = diaDaSemana;
     }

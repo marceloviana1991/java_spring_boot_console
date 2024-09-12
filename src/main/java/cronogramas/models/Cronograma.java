@@ -13,8 +13,6 @@ public class Cronograma {
     private Long id;
     @Column(unique = true)
     private String titulo;
-    @OneToMany(mappedBy = "cronograma", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Evento> eventos = new ArrayList<>();
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -22,11 +20,6 @@ public class Cronograma {
 
     public Long getId() {
         return id;
-    }
-
-    public void addEvento(Evento evento) {
-        this.eventos.add(evento);
-        evento.setCronograma(this);
     }
 
     @Override

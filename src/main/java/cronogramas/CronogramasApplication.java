@@ -2,6 +2,7 @@ package cronogramas;
 
 
 import cronogramas.principal.*;
+import cronogramas.repository.AvaliacaoRepository;
 import cronogramas.repository.CronogramaRepository;
 import cronogramas.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class CronogramasApplication implements CommandLineRunner {
 	private CronogramaRepository cronogramaRepository;
 	@Autowired
 	private EventoRepository eventoRepository;
+	@Autowired
+	private AvaliacaoRepository avaliacaoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CronogramasApplication.class, args);
@@ -28,19 +31,23 @@ public class CronogramasApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Principal principal = new Principal(
 				cronogramaRepository,
-				eventoRepository
+				eventoRepository,
+				avaliacaoRepository
 		);
 
 		int menu;
 		Scanner leitura = new Scanner(System.in);
+		principal.insertAvaliacaoConsole(8.8,"uma bosta", 1L);
 
 		do{
 			System.out.println("""
 					1 - Cadastrar cronograma
-					2 - Cadastrar evento
-					3 - Listar todos cronogramas
-					4 - Listar todos eventos
-					5 - Listar eventos de um cronograma
+					2 - Cadastrar evento de cronograma
+					3 - Cadastrar avaliacao de evento
+					4 - Listar todos cronogramas
+					5 - Listar todos eventos
+					6 - Listar eventos de um cronograma
+					7 - Listar avaliações de um evento
 					0 - Sair
 					""");
 			try {
@@ -58,13 +65,19 @@ public class CronogramasApplication implements CommandLineRunner {
 					CadastrarEvento.cadastrarEvento(principal);
 					break;
 				case 3:
-					ListarCronogramas.listarCronogramas(principal);
+					CadastrarAvaliacao.cadastrarAvaliacao(principal);
 					break;
 				case 4:
-					ListarEventos.listarEventos(principal);
+					ListarCronogramas.listarCronogramas(principal);
 					break;
 				case 5:
+					ListarEventos.listarEventos(principal);
+					break;
+				case 6:
 					ListarEventosDeCronograma.lisarEventosDeCronograma(principal);
+					break;
+				case 7:
+					ListarAvaliacoesDeEvento.listarvaliacoesDeEvento(principal);
 			}
 		} while (menu != 0);
 
