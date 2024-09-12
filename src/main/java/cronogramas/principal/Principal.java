@@ -7,6 +7,7 @@ import cronogramas.models.Evento;
 import cronogramas.repository.AvaliacaoRepository;
 import cronogramas.repository.CronogramaRepository;
 import cronogramas.repository.EventoRepository;
+import org.springframework.data.domain.Pageable;
 
 import java.util.*;
 
@@ -61,7 +62,7 @@ public class Principal {
         return eventoRepository.findByCronogramaIdOrderByDiaDaSemana(idCronograma);
     }
 
-    public List<Avaliacao> selectAvaliacoesEventoConsole(Long idEvento) {
-        return avaliacaoRepository.findByEventoId(idEvento);
+    public List<Avaliacao> selectAvaliacoesEventoConsole(Long idEvento, Pageable pageable) {
+        return avaliacaoRepository.findByEventoIdOrderByIdDesc(idEvento, pageable);
     }
 }

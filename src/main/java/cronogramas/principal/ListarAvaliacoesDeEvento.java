@@ -1,7 +1,7 @@
 package cronogramas.principal;
 
 import cronogramas.models.Avaliacao;
-import java.util.Collections;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 import java.util.Scanner;
@@ -15,10 +15,8 @@ public class ListarAvaliacoesDeEvento {
         int limit = Integer.parseInt(leitura.nextLine());
         System.out.println("Informe um valor para offset:");
         int offset = Integer.parseInt(leitura.nextLine());
-        List<Avaliacao> avaliacoesEvento = principal.selectAvaliacoesEventoConsole(idEventoAvaliacoes);
-        Collections.reverse(avaliacoesEvento);
-        for (int i = offset; i < (limit + offset); i++){
-            System.out.println(avaliacoesEvento.get(i));
-        }
+        List<Avaliacao> avaliacoesEvento = principal.selectAvaliacoesEventoConsole(idEventoAvaliacoes,
+                PageRequest.of(offset, limit));
+        avaliacoesEvento.forEach(System.out::println);
     }
 }
