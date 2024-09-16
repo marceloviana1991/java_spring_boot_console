@@ -59,10 +59,16 @@ public class Principal {
     }
 
     public List<Evento> selectEventosCronogramaConsole(Long idCronograma) {
+        /*
+        Seleciona todos os eventos de um cronograma trazendo-os ordenados pelo dia da semana
+         */
         return eventoRepository.findByCronogramaIdOrderByDiaDaSemana(idCronograma);
     }
 
     public List<Avaliacao> selectAvaliacoesEventoConsole(Long idEvento, Pageable pageable) {
+        /*
+        Seleciona paginação de avaliações de um evento trazendo-os em ordem invertida
+         */
         return avaliacaoRepository.findByEventoIdOrderByIdDesc(idEvento, pageable);
     }
 }
